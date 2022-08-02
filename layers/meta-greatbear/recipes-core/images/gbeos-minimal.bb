@@ -95,15 +95,6 @@ IMAGE_INSTALL = "\
     keepalived dpkg \
     ${CORE_IMAGE_EXTRA_INSTALL} \
     "
-IMAGE_INSTALL:append = " packagegroup-demo-base packagegroup-demo-basetests packagegroup-demo-x11tests packagegroup-demo-vulkantests"
-IMAGE_INSTALL:append = " packagegroup-demo-systemd "
-IMAGE_INSTALL:append = " libvisionworks-devso-symlink nvidia-docker cuda-libraries tegra-mmapi-tests vpi1-tests "
-IMAGE_INSTALL:append = " nvidia-docker cudnn  libvisionworks libvisionworks-sfm libvisionworks-tracking cuda-libraries cuda-toolkit"
-# IMAGE_INSTALL:append = " tensorrt tensorrt-tests "
-IMAGE_INSTALL:append = " cuda-toolkit cuda-command-line-tools cuda-samples cuda-shared-binaries libnvvpi1"
-IMAGE_INSTALL:append = " cuda-toolkit cuda-command-line-tools cuda-samples libnvvpi1"
-IMAGE_INSTALL:append = " k3s kernel-modules curl dpkg iscsi-initiator-utils python3-ansible "
-TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-cuda-sdk-host"
 
 # inherit features_check core-image setuptools3
 inherit core-image setuptools3
