@@ -265,4 +265,4 @@ PACKAGECONFIG:append:pn-qemu-system-native = " sdl"
 # this doesn't mean anything to you.
 CONF_VERSION = "2"
 
-NVIDIA_DEVNET_MIRROR ?= "file:///data/Downloads/nvidia/sdkm_downloads/"
+NVIDIA_DEVNET_MIRROR ?= "file:///data/Downloads/nvidia/sdkm_downloads"
