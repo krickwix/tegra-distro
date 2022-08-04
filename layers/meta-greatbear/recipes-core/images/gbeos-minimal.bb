@@ -21,7 +21,7 @@ REQUIRED_DISTRO_FEATURES = "x11 opengl virtualization"
 CORE_IMAGE_BASE_INSTALL += "packagegroup-demo-x11tests"
 CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'packagegroup-demo-vulkantests', '', d)}"
 CORE_IMAGE_BASE_INSTALL += "libvisionworks-devso-symlink nvidia-docker cuda-libraries tegra-mmapi-tests vpi1-tests tensorrt-tests"
-CORE_IMAGE_BASE_INSTALL += "cuda-toolkit nvidia-container-toolkit tegra-nvpmodel"
+CORE_IMAGE_BASE_INSTALL += "cuda-toolkit cuda-nvml nvidia-container-toolkit tegra-nvpmodel"
 
 IMAGE_INSTALL:append = " tzdata python3-pip perl-misc \
     bash parted curl k3s \
