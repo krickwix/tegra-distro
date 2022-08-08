@@ -16,7 +16,7 @@ IMAGE_FEATURES += "splash x11-base hwcodecs"
 
 inherit features_check
 
-REQUIRED_DISTRO_FEATURES = "x11 opengl virtualization"
+REQUIRED_DISTRO_FEATURES = "x11 opengl virtualization systemd"
 
 CORE_IMAGE_BASE_INSTALL += "packagegroup-demo-x11tests"
 CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'packagegroup-demo-vulkantests', '', d)}"
@@ -29,4 +29,5 @@ IMAGE_INSTALL:append = " tzdata python3-pip perl-misc \
     python3-ansible \
     python3-distutils python3-distutils-extra \
     keepalived dpkg \
+    iscsi-initiator-utils tgt \
 "
