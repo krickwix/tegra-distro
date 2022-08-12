@@ -33,7 +33,7 @@ pipeline {
                    fingerprint: true,
                    onlyIfSuccessful: true
                 minio bucket: 'gbear-yocto-images-jetson',
-                    credentialsId: 'minio_gbear-user',
+                    credentialsId: 'minio-admin',
                     targetFolder: 'jenkins-build/'+BRANCH_NAME,
                     host: 'http://10.60.16.166:9000',
                     includes: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz'
