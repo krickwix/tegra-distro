@@ -26,19 +26,19 @@ pipeline {
                 }
             }
         }
-    	// stage("artefacts") {
-        //     steps {
-        //         archiveArtifacts artifacts: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz',
-        //            allowEmptyArchive: true,
-        //            fingerprint: true,
-        //            onlyIfSuccessful: true
-        // 	minio bucket: 'gbear-yocto-images-jetson',
-        //            credentialsId: 'minio_gbear-user',
-        //            targetFolder: 'jenkins-build/'+BRANCH_NAME,
-        //            host: 'http://hubble-minio.cisco.com',
-        //            includes: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz'
-        //     }
-    	// }
+    	stage("artefacts") {
+            steps {
+                archiveArtifacts artifacts: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz',
+                   allowEmptyArchive: true,
+                   fingerprint: true,
+                   onlyIfSuccessful: true
+                minio bucket: 'gbear-yocto-images-jetson',
+                    credentialsId: 'minio_gbear-user',
+                    targetFolder: 'jenkins-build/'+BRANCH_NAME,
+                    host: 'http://10.60.16.166:9000',
+                    includes: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz'
+            }
+    	}
     }
     post {
         // Clean after build
