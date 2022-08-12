@@ -24,7 +24,7 @@ CORE_IMAGE_BASE_INSTALL += "libvisionworks-devso-symlink nvidia-docker cuda-libr
 CORE_IMAGE_BASE_INSTALL += "cuda-toolkit cuda-nvml nvidia-container-toolkit tegra-nvpmodel"
 
 IMAGE_INSTALL:append = " tzdata python3-pip perl-misc \
-    bash parted curl k3s \
+    bash parted curl \
     linux-firmware kernel-modules \
     python3-ansible \
     python3-distutils python3-distutils-extra \
