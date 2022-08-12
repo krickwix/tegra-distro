@@ -12,7 +12,7 @@ TOOLCHAIN_HOST_TASK += "nativesdk-packagegroup-cuda-sdk-host"
 
 inherit nopackages
 
-IMAGE_FEATURES += "splash x11-base hwcodecs"
+IMAGE_FEATURES += "splash"
 
 inherit features_check
 
@@ -20,9 +20,9 @@ inherit features_check
 REQUIRED_DISTRO_FEATURES = "virtualization systemd"
 
 #CORE_IMAGE_BASE_INSTALL += "packagegroup-demo-x11tests"
-CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'packagegroup-demo-vulkantests', '', d)}"
-CORE_IMAGE_BASE_INSTALL += "libvisionworks-devso-symlink nvidia-docker cuda-libraries tegra-mmapi-tests vpi1-tests tensorrt-tests"
-CORE_IMAGE_BASE_INSTALL += "cuda-toolkit cuda-nvml nvidia-container-toolkit tegra-nvpmodel"
+#CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'packagegroup-demo-vulkantests', '', d)}"
+#CORE_IMAGE_BASE_INSTALL += "libvisionworks-devso-symlink tegra-mmapi-tests vpi1-tests tensorrt-tests"
+CORE_IMAGE_BASE_INSTALL += "nvidia-docker cuda-libraries cudnn cuda-toolkit cuda-nvml nvidia-container-toolkit tegra-nvpmodel"
 
 IMAGE_INSTALL:append = " tzdata python3-pip perl-misc \
     bash parted curl \
@@ -32,3 +32,4 @@ IMAGE_INSTALL:append = " tzdata python3-pip perl-misc \
     keepalived dpkg \
     iscsi-initiator-utils tgt \
 "
+MACHINE_HWCODECS = ""
