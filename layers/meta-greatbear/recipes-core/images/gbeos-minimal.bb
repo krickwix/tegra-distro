@@ -22,7 +22,7 @@ REQUIRED_DISTRO_FEATURES = "virtualization systemd"
 #CORE_IMAGE_BASE_INSTALL += "packagegroup-demo-x11tests"
 #CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'vulkan', 'packagegroup-demo-vulkantests', '', d)}"
 #CORE_IMAGE_BASE_INSTALL += "libvisionworks-devso-symlink tegra-mmapi-tests vpi1-tests tensorrt-tests"
-CORE_IMAGE_BASE_INSTALL += "nvidia-docker cuda-libraries cudnn cuda-toolkit cuda-nvml nvidia-container-toolkit tegra-nvpmodel"
+CORE_IMAGE_BASE_INSTALL += "nvidia-docker cuda-libraries cudnn cuda-toolkit cuda-nvml nvidia-container-toolkit"
 
 IMAGE_INSTALL:append = " tzdata python3-pip perl-misc \
     bash parted curl \
