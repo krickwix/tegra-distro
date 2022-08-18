@@ -1,0 +1,50 @@
+pipeline {
+    agent {
+        docker { image 'docker.io/krickwix/ybuild:v0.3' }
+    }
+    environment {
+        BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
+    }
+    stages {
+        stage('scm') {
+            steps {
+                withEnv(['LANG="C"']) {
+                    sh("git submodule update --init --recursive --jobs 32")
+                }
+            }
+        }
+        stage("build") {
+            steps {
+                withEnv(['LANG="C"','all_proxy=socks5://proxy-ams-1.cisco.com:1080','no_proxy=10.60.16.249']) {
+                    sh(". setup-env --machine jetson-agx-xavier-devkit --distro gbeos && \
+                    echo '' >> conf/local.conf && \
+                    echo 'INHERIT += \"own-mirrors\"' >> conf/local.conf && \
+                    echo 'SOURCE_MIRROR_URL = \"http://10.60.16.249/datastore/yocto_sources/tegra\"' >> conf/local.conf && \
+                    echo 'NVIDIA_DEVNET_MIRROR = \"http://10.60.16.249/datastore/nvidia/sdkm_downloads\"' >> conf/local.conf && \
+                    echo 'SSTATE_MIRRORS = \"file://.* http://10.60.16.249/datastore/sstate-cache/tegra-distro/PATH\"' >> conf/local.conf && \
+                    cat conf/local.conf && \
+                    MACHINE=jetson-agx-xavier-devkit bitbake gbeos-minimal")
+                }
+            }
+        }
+    	stage("artefacts") {
+            steps {
+                archiveArtifacts artifacts: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz',
+                   allowEmptyArchive: true,
+                   fingerprint: true,
+                   onlyIfSuccessful: true
+                minio bucket: 'gbear-yocto-images-jetson',
+                    credentialsId: 'minio-admin',
+                    targetFolder: 'jenkins-build/'+BRANCH_NAME,
+                    host: 'http://10.60.16.166:9000',
+                    includes: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz'
+            }
+    	}
+    }
+    post {
+        // Clean after build
+        always {
+            cleanWs()
+        }
+    }
+}
