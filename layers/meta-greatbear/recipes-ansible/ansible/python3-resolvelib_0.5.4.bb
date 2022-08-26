@@ -9,8 +9,9 @@ SRC_URI = "https://files.pythonhosted.org/packages/8f/7f/b8b2c7e8b2030710b6ef2d1
 SRC_URI[md5sum] = "98078e0fcd9366278f64af522cd124fa"
 SRC_URI[sha256sum] = "9b9b80d5c60e4c2a8b7fbf0712c3449dc01d74e215632e5199850c9eca687628"
 
-S = "${WORKDIR}/resolvelib-0.5.4"
-
-RDEPENDS_${PN} = ""
-
 inherit setuptools3
+
+INSANE_SKIP:${PN} += "file-rdeps"
+PIP_INSTALL_PACKAGE = "resolvelib"
+S = "${WORKDIR}/resolvelib-${PV}"
+BBCLASSEXTEND = "native"

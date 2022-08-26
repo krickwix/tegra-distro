@@ -1,0 +1,17 @@
+[Unit]
+Description=greatbear agent service
+After=agentbootstrap.service
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=exec
+TimeoutStartSec=0
+Restart=always
+RestartSec=15s
+Restart=always
+EnvironmentFile=-/etc/systemd/system/agent.service.env
+ExecStartPre=/usr/bin/agent-bootstrap.sh
+ExecStart=/usr/bin/agent
+

@@ -1,34 +1,34 @@
 [submodule "poky"]
 	path = repos/poky
-	url = https://git.yoctoproject.org/poky
+	url = https://wwwin-github.cisco.com/AppEdge/poky.git
 	branch = master
 [submodule "repos/meta-openembedded"]
 	path = repos/meta-openembedded
-	url = https://git.openembedded.org/meta-openembedded
+	url = https://wwwin-github.cisco.com/AppEdge/meta-openembedded.git
 	branch = master
 [submodule "repos/meta-virtualization"]
 	path = repos/meta-virtualization
-	url = https://git.yoctoproject.org/meta-virtualization
-	branch = master
+	url = https://wwwin-github.cisco.com/AppEdge/meta-virtualization.git
+	branch = master-next
 [submodule "repos/meta-mender"]
 	path = repos/meta-mender
-	url = https://github.com/madisongh/meta-mender.git
+	url = https://wwwin-github.cisco.com/AppEdge/meta-mender.git
 	branch = dunfell-kirkstone-compat
 [submodule "repos/meta-mender-community"]
 	path = repos/meta-mender-community
-	url = https://github.com/mendersoftware/meta-mender-community.git
+	url = https://wwwin-github.cisco.com/AppEdge/meta-mender-community.git
 	branch = kirkstone-next
 [submodule "repos/meta-tegra"]
 	path = repos/meta-tegra
-	url = https://github.com/OE4T/meta-tegra.git
+	url = https://wwwin-github.cisco.com/AppEdge/meta-tegra.git
 	branch = master
 [submodule "repos/meta-tegra-community"]
 	path = repos/meta-tegra-community
-	url = https://github.com/OE4T/meta-tegra-community
+	url = https://wwwin-github.cisco.com/AppEdge/meta-tegra-community.git
 	branch = master
 [submodule "repos/meta-browser"]
 	path = repos/meta-browser
-	url = https://github.com/OSSystems/meta-browser.git
+	url = https://wwwin-github.cisco.com/AppEdge/meta-browser.git
 [submodule "repos/meta-clang"]
 	path = repos/meta-clang
-	url = https://github.com/kraj/meta-clang.git
+	url = https://wwwin-github.cisco.com/AppEdge/meta-clang.git

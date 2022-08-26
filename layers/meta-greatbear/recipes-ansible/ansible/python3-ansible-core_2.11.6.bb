@@ -9,8 +9,9 @@ SRC_URI = "https://files.pythonhosted.org/packages/be/1a/f40e97f4c400eec75813bc4
 SRC_URI[md5sum] = "59ffdc26466b8f14c91502f876afd3c8"
 SRC_URI[sha256sum] = "93d50283c7c5b476debf83dc089b3f679b939a8b9a7b5d628d28daafbb3d303a"
 
-S = "${WORKDIR}/ansible-core-2.11.6"
-
-RDEPENDS_${PN} = ""
-
 inherit setuptools3
+
+INSANE_SKIP:${PN} += "file-rdeps"
+PIP_INSTALL_PACKAGE = "ansible-core"
+S = "${WORKDIR}/ansible-core-${PV}"
+BBCLASSEXTEND = "native"
