@@ -19,7 +19,7 @@ pipeline {
                     sh(". setup-env --machine jetson-xavier-nx-devkit-tx2-nx --distro gbeos && \
                     echo '' >> conf/local.conf && \
                     echo 'INHERIT += \"own-mirrors\"' >> conf/local.conf && \
-                    echo 'SOURCE_MIRROR_URL = \"http://10.60.16.249/datastore/yocto_sources/tegra\"' >> conf/local.conf && \
+                    echo 'SOURCE_MIRROR_URL = \"http://10.60.16.249/datastore/yocto_sources/tegra/jetson-xavier-nx-devkit-tx2-nx\"' >> conf/local.conf && \
                     echo 'NVIDIA_DEVNET_MIRROR = \"http://10.60.16.249/datastore/nvidia/sdkm_downloads\"' >> conf/local.conf && \
                     cat conf/local.conf && \
                     MACHINE=jetson-xavier-nx-devkit-tx2-nx bitbake gbeos-minimal")
