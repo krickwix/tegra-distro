@@ -13,7 +13,7 @@ CORE_IMAGE_BASE_INSTALL += "nvidia-docker cuda-libraries cudnn cuda-toolkit cuda
 
 inherit nopackages
 
-IMAGE_FEATURES += "splash"
+#IMAGE_FEATURES += "splash"
 
 inherit features_check
 
