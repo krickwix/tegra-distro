@@ -1,0 +1,40 @@
+pipeline {
+    agent {
+        docker { image 'docker.io/krickwix/ybuild:v0.3' }
+    }
+    environment {
+        BRANCH_NAME = "${GIT_BRANCH.split('/').size() > 1 ? GIT_BRANCH.split('/')[1..-1].join('/') : GIT_BRANCH}"
+    }
+    stages {
+        stage('scm') {
+            steps {
+                withEnv(['LANG="C"']) {
+                    sh("git submodule update --init --recursive --jobs 32")
+                }
+            }
+        }
+        stage("build") {
+            steps {
+                withEnv(['LANG="C"']) {
+                    sh '''#!/bin/bash
+                    . setup-env --machine jetson-nano-devkit --distro gbeos && \
+                    MACHINE=jetson-nano-devkit bitbake gbeos-minimal'''
+                }
+            }
+        }
+    	stage("artefacts") {
+            steps {
+                archiveArtifacts artifacts: 'build/tmp/deploy/images/**/*.tegraflash.tar.gz',
+                   allowEmptyArchive: true,
+                   fingerprint: true,
+                   onlyIfSuccessful: true
+            }
+    	}
+    }
+    post {
+        // Clean after build
+        always {
+            cleanWs()
+        }
+    }
+}
