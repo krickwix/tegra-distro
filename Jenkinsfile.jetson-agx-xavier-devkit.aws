@@ -18,6 +18,8 @@ pipeline {
                 withEnv(['LANG="C"']) {
                     sh '''#!/bin/bash
                     . setup-env --machine jetson-agx-xavier-devkit --distro gbeos && \
+                    echo 'INHERIT += \"own-mirrors\"' >> conf/local.conf && \
+                    echo 'SOURCE_MIRROR_URL = \"http://172.31.20.10/Downloads/yocto/tegra\"' >> conf/local.conf && \
                     MACHINE=jetson-agx-xavier-devkit bitbake gbeos-minimal'''
                 }
             }
