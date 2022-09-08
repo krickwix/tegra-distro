@@ -17,6 +17,9 @@ if [ -z "$PLATFORM" ]; then
     PLATFORM="gbeos"
 fi
 
+hostnamectl set-hostname gb-$HARDWARE_ID
+sed -i "s/^127.0.1.1.*/127.0.1.1 gb-$HARDWARE_ID/" /etc/hosts
+
 wsdir=/var/lib/gbear
 mkdir -p $wsdir
 
