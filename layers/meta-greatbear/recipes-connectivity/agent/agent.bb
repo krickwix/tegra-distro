@@ -12,4 +12,7 @@ do_install() {
   ln -s ../agent.service ${D}/etc/systemd/system/multi-user.target.wants/agent.service
   install ${THISDIR}/files/agentbootstrap.service ${D}/etc/systemd/system/agentbootstrap.service
   ln -s ../agentbootstrap.service ${D}/etc/systemd/system/multi-user.target.wants/agentbootstrap.service
+  install -m 0755 ${THISDIR}/files/99-local.rules ${D}/etc/udev/rules.d/99-local.rules
+  install -m 0755 ${THISDIR}/files/usb-mount.sh ${D}/usr/sbin/usb-mount.sh
+  install ${THISDIR}/files/usb-mount@.service ${D}/etc/systemd/system/usb-mount@.service
 }
