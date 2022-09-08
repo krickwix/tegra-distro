@@ -1,8 +1,8 @@
 SUMMARY = "GreatBear install agent"
 DESCRIPTION = "GreatBear install agent"
 LICENSE = "MIT"
-INSANE_SKIP:${PN} += " already-stripped"
-
+INSANE_SKIP:${PN} += " already-stripped file-rdeps"
+RDEPEND:${PN} = "bash"
 do_install() {
   install -d ${D}${bindir}
   install -m 0755 ${THISDIR}/files/agent ${D}${bindir}/agent
@@ -13,6 +13,7 @@ do_install() {
   install ${THISDIR}/files/agentbootstrap.service ${D}/etc/systemd/system/agentbootstrap.service
   ln -s ../agentbootstrap.service ${D}/etc/systemd/system/multi-user.target.wants/agentbootstrap.service
   install -d ${D}/etc/udev/rules.d
+  install -d ${D}/usr/sbin
   install -m 0755 ${THISDIR}/files/99-local.rules ${D}/etc/udev/rules.d/99-local.rules
   install -m 0755 ${THISDIR}/files/usb-mount.sh ${D}/usr/sbin/usb-mount.sh
   install ${THISDIR}/files/usb-mount@.service ${D}/etc/systemd/system/usb-mount@.service
