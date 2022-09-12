@@ -12,6 +12,7 @@ Restart=always
 RestartSec=15s
 Restart=always
 EnvironmentFile=-/etc/systemd/system/agent.service.env
+EnvironmentFile=/etc/environment
 ExecStartPre=/usr/bin/agent-bootstrap.sh
 ExecStart=/usr/bin/agent
 
