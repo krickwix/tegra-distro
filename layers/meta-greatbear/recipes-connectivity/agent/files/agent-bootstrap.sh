@@ -32,3 +32,23 @@ LOG_LEVEL=$LOG_LEVEL
 AGENT_DATA_DIR=$wsdir
 END
 
+FILE=config.gb
+# Search for a GB config file
+if test -f "/media/$FILE"; then
+   while IFS="=" read -r key value; do
+    case "$key" in
+      "http_proxy") export http_proxy="$value";;
+      "https_proxy") export https_proxy="$value";;
+      "no_proxy") export no_proxy="$value";;
+    esac
+  done < /media/$FILE
+fi
+
+if [ -n "$http_proxy$https_proxy" ]; then
+    tee -a /etc/systemd/system/agent.service.env << EOF
+http_proxy=$http_proxy
+https_proxy=$https_proxy
+no_proxy=$no_proxy
+EOF
+fi
+

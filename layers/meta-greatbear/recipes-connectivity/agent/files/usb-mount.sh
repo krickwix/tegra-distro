@@ -61,6 +61,19 @@ data:
   NODEMANAGER_TENANT_ID: $(echo -n $TENANT_ID | base64 -w0)
 $proxy_settings
 EOF
+
+if [ -n "$http_proxy$https_proxy" ]; then
+    tee /etc/environment << EOF
+http_proxy=$http_proxy
+https_proxy=$https_proxy
+no_proxy=$no_proxy
+EOF
+fi
+
+systemctl daemon-reload
+systemctl restart agent
+
+
 # Dump logs to drive
 logdate=$(hostname)-$(date "+%F%H%M%S")
 logfile=journal-$logdate
