@@ -2,7 +2,7 @@
 SUMMARY = "Radically simple IT automation"
 HOMEPAGE = "https://ansible.com/"
 AUTHOR = "Ansible, Inc. <info@ansible.com>"
-LICENSE = "GPLv3"
+LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=8f0e2cd40e05189ec81232da84bd6e1a"
 
 SRC_URI = "https://files.pythonhosted.org/packages/be/1a/f40e97f4c400eec75813bc492f1d6226cd413bf03f88d5f00070a1e699a3/ansible-core-2.11.6.tar.gz"

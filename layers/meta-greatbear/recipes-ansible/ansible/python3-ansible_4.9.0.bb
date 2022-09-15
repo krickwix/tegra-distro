@@ -2,7 +2,7 @@
 SUMMARY = "Radically simple IT automation"
 HOMEPAGE = "https://ansible.com/"
 AUTHOR = "Ansible, Inc. <info@ansible.com>"
-LICENSE = "GPLv3"
+LICENSE = "MIT"
 LIC_FILES_CHKSUM = "file://COPYING;md5=8f0e2cd40e05189ec81232da84bd6e1a"
 
 SRC_URI = "https://files.pythonhosted.org/packages/6c/6a/d2729c854d5487f4c8e18a72eadf53287a2aa16d7924df39751025592ab9/ansible-4.9.0.tar.gz"
